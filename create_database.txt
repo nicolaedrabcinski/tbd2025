@@ -1,0 +1,9 @@
+postgres=# CREATE DATABASE hockey_database;
+CREATE DATABASE
+postgres=# CREATE USER hockey_database_user WITH ENCRYPTED PASSWORD 'hockey_password';
+CREATE ROLE
+postgres=# GRANT ALL PRIVILEGES ON DATABASE hockey_database to hockey_database_user;
+GRANT
+postgres=# ALTER DATABASE hockey_database OWNER TO hockey_database_user;
+ALTER DATABASE
+postgres=# 
