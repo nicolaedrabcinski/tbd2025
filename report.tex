@@ -1,1 +1,78 @@
-NHL. Informații despre meciuri: echipa 1, formația principală (este suficient să se precizeze 3 jucători), echipa 2, formația de bază (este suficient să se precizeze 3 jucători), scor, informații despre goluri.
+NHL. 
+Informații despre meciuri: 
+- Echipa 1, 
+- Formația principală (este suficient să se precizeze 3 jucători), 
+- Echipa 2, 
+- Formația de bază (este suficient să se precizeze 3 jucători), 
+- Score, 
+- Informații despre goluri.
+
+Основные сущности:
+- Competition (соревнования)
+- Season (сезоны)
+- Competitor (команды)
+- Player (игроки)
+- SportEvent (матчи/события)
+- Standing (турнирная таблица)
+- Statistic (статистика)
+
+Project structure:
+hockey-analytics/
+├── api/                          # FastAPI компоненты
+│   ├── endpoints/
+│   │   ├── competitions.py
+│   │   ├── players.py
+│   │   └── events.py
+│   ├── models/                   # Pydantic модели
+│   ├── dependencies/
+│   ├── core/
+│   │   ├── config.py            # Конфигурация приложения
+│   │   └── security.py
+│   └── main.py                  # Точка входа API
+├── etl/                          # Prefect/Airflow задачи
+│   ├── flows/
+│   │   ├── sportradar_ingestion.py
+│   │   └── nhl_transform.py
+│   ├── tasks/
+│   └── pipelines/               # Готовые пайплайны
+├── models/                       # SQLAlchemy модели
+│   ├── base.py                  # Базовые классы
+│   ├── oltp/                    # Для PostgreSQL
+│   │   ├── __init__.py
+│   │   ├── competitions.py
+│   │   ├── seasons.py
+│   │   └── players.py
+│   └── olap/                    # Для ClickHouse
+│       ├── __init__.py
+│       └── analytics.py
+├── dbt/                         # dbt проекты
+│   ├── hockey_transformations/
+│   │   ├── models/
+│   │   ├── macros/
+│   │   └── profiles.yml
+├── clickhouse_models/           # Модели для ClickHouse
+├── redis/                       # Redis-related код
+├── infrastructure/
+│   ├── docker/
+│   │   ├── postgres/
+│   │   ├── clickhouse/
+│   │   └── airflow/
+│   ├── kubernetes/
+│   └── terraform/
+├── tests/                       # Тесты
+│   ├── unit/
+│   ├── integration/
+│   └── conftest.py
+├── utils/                       # Вспомогательные утилиты
+│   ├── database.py             # Сессии, подключения
+│   ├── cache.py                # Redis-утилиты
+│   └── data_processing.py
+├── scripts/                     # Полезные скрипты
+├── requirements/                # Зависимости
+│   ├── base.txt
+│   ├── api.txt
+│   └── etl.txt
+├── .env                        # Переменные окружения
+├── .pre-commit-config.yaml
+├── pyproject.toml             # Poetry конфиг
+└── README.md

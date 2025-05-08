@@ -4,13 +4,11 @@
 
 - (Main DBMS) PostgreSQL
 - (OLAP/Analytical DBMS) ClickHouse
-- (In Memory Cache) Redis
 
 # ETL & Processing data
 
-- (Orchestration) Apache Airflow ?? Prefect
+- (Orchestration) Prefect
 - (Transform data in SQL) dbt
-- (GUI ETL) Talend ??
 
 # OLAP and analytics
 
@@ -20,11 +18,10 @@
 # Visualizations and reports
 
 - Metabase
-- Apache Superset
 
 # Integrations and API
 
-- (API NHL) FastAPI
+- API NHL Sportsradar
 
 # Conteinerization & DevOps
 
@@ -33,5 +30,4 @@
 - GitLab CI && Jenkins
 
 
-# Workflow
 

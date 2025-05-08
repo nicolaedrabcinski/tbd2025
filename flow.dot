@@ -1,0 +1,112 @@
+digraph Architecture {
+    rankdir=LR;
+    fontsize=10;
+    node [shape=box, style=filled, fillcolor=lightgray];
+
+    // Data Sources & Ingestion
+    subgraph cluster_ingestion {
+        label="Data Sources & Ingestion";
+        style=filled;
+        color=lightblue;
+
+        Sportradar [label="Sportradar API"];
+        NHL_API [label="Custom NHL API\n(FastAPI)"];
+        Push [label="Streaming Push\n(Webhooks)"];
+        Gateway [label="API Gateway\n(Rate Limiting, Auth)"];
+        MQ [label="Message Queue\n(RabbitMQ/Kafka)"];
+        Debezium [label="Change Data Capture\n(Debezium)"];
+
+        Sportradar -> NHL_API;
+        NHL_API -> Push;
+        Sportradar -> Gateway;
+        NHL_API -> Gateway;
+        Push -> Gateway;
+        NHL_API -> MQ;
+        Push -> Debezium;
+        Gateway -> MQ;
+    }
+
+    // Processing & Transformation
+    subgraph cluster_processing {
+        label="Processing & Transformation";
+        style=filled;
+        color=lightyellow;
+
+        Orchestrator [label="Prefect / Airflow\n(Orchestration)"];
+        dbt [label="dbt Core\n(SQL Transforms)"];
+        Talend [label="Talend ETL\n(GUI Pipeline)"];
+        Redis [label="Redis Cache\n(In-Memory)"];
+        Quality [label="Data Quality\n(Great Expectations)"];
+        Schema [label="Schema Registry\n(Avro/Protobuf)"];
+
+        MQ -> Orchestrator;
+        Orchestrator -> dbt;
+        dbt -> Talend;
+        Orchestrator -> Redis;
+        dbt -> Quality;
+        Talend -> Schema;
+        Debezium -> Talend;
+    }
+
+    // Storage & Analytics
+    subgraph cluster_storage {
+        label="Storage & Analytics";
+        style=filled;
+        color=lightgreen;
+
+        PostgreSQL [label="PostgreSQL\n(OLTP)"];
+        ClickHouse [label="ClickHouse\n(OLAP)"];
+        Hadoop [label="Hadoop HDFS\n(Data Lake)"];
+        S3 [label="MinIO S3\n(Object Storage)"];
+        Cube [label="Cube.js\n(Semantic Layer)"];
+        Catalog [label="Data Catalog\n(Apache Atlas)"];
+
+        Talend -> PostgreSQL;
+        Talend -> ClickHouse;
+        Talend -> Hadoop;
+
+        PostgreSQL -> S3;
+        ClickHouse -> Cube;
+        Hadoop -> Catalog;
+    }
+
+    // Visualization & Serving
+    subgraph cluster_visualization {
+        label="Visualization & Serving";
+        style=filled;
+        color=thistle;
+
+        Metabase [label="Metabase\n(Dashboards)"];
+        Superset [label="Apache Superset\n(Analytics)"];
+        FastAPI [label="FastAPI\n(REST API)"];
+        Metrics [label="Unified Metrics Layer\n(Cube.js Models)"];
+        GraphQL [label="GraphQL Gateway\n(Hasura / Apollo)"];
+
+        S3 -> Metabase;
+        Cube -> Superset;
+        PostgreSQL -> FastAPI;
+        Metabase -> Metrics;
+        Superset -> Metrics;
+        FastAPI -> GraphQL;
+    }
+
+    // Infrastructure & DevOps
+    subgraph cluster_infra {
+        label="Infrastructure & DevOps";
+        style=filled;
+        color=gray90;
+
+        Docker [label="Docker\n(Containers)"];
+        K8s [label="Kubernetes\n(Orchestration)"];
+        GitLab [label="GitLab CI\n(Pipelines)"];
+        Monitor [label="Monitoring\n(Prometheus/Grafana)"];
+        Logging [label="Logging\n(ELK Stack)"];
+        Terraform [label="IaC\n(Terraform)"];
+
+        Docker -> K8s;
+        K8s -> GitLab;
+        GitLab -> Monitor;
+        GitLab -> Logging;
+        GitLab -> Terraform;
+    }
+}

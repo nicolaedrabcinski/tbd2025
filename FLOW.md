@@ -4,12 +4,24 @@
 1. [x] Установить PostgreSQL на Linux-сервер.
 2. [x] Настроить пользователя и права для БД.
 3. [x] Установить Docker и Docker Compose.
-4. [ ] Развернуть Prefect в Docker. <-
-5. Настроить подключение Prefect к PostgreSQL.
-6. Установить Python 3.10 и необходимые библиотеки (polars, requests).
-7. Создать виртуальное окружение для Python.
-8. Настроить SSH-доступ к серверу.
-9. Установить pgAdmin для администрирования PostgreSQL.
+4. [x] Развернуть Prefect в Docker. <-
+5. [ ] Настроить подключение Prefect к PostgreSQL.
+   1. [ ] https://linen.prefect.io/t/22697098/does-anyone-have-a-working-docker-compose-file-for-prefect-3
+   2. [ ] https://github.com/PrefectHQ/prefect-background-task-examples/blob/main/chaos-duck/docker-compose.yaml
+   3. [ ] https://linen.prefect.io/t/26789998/ulva73b9p-give-me-docker-compose-to-setup-prefect3-locally
+   4. [ ] https://wasit7.medium.com/building-a-simple-prefect-3-data-pipeline-with-jupyter-and-docker-7eeac8f7df0f
+   5. [ ] https://medium.com/the-prefect-blog/how-to-self-host-prefect-orion-with-postgres-using-docker-compose-631c41ab8a9f
+   6. [ ] https://docs.prefect.io/v3/deploy/infrastructure-examples/docker
+   7. [ ] https://www.restack.io/docs/prefect-knowledge-prefect-postgres-example
+   8. [ ] https://www.restack.io/docs/prefect-knowledge-prefect-postgres-integration#clp7bhdcx03x6z80up3oiurs8
+   9. [ ] https://www.restack.io/docs/prefect-knowledge-prefect-postgresql-integration#clp8nv78g066xyp0u7bqsnn7d
+   10. [ ] https://www.restack.io/docs/prefect-knowledge-prefect-postgresql-integration#clp8nv78g066xyp0u7bqsnn7d
+   11. [ ] https://www.restack.io/docs/prefect-knowledge-prefect-postgres-db-integration
+   12. [ ] https://github.com/PrefectHQ/examples
+6. [x] Установить Python 3.10 и необходимые библиотеки (polars, requests).
+7. [x] Создать виртуальное окружение для Python в Poetry.
+8. [x] Настроить SSH-доступ к серверу.
+9.  Установить pgAdmin для администрирования PostgreSQL.
 10. Настроить брандмауэр для доступа к портам БД.
 11. Создать резервную копию пустой БД.
 12. Настроить автоматическое обновление системы.
@@ -23,7 +35,9 @@
 20. Задокументировать шаги установки.
 
 ## 2. Сбор данных (15 задач)
-21. Получить API-ключ NHL (если требуется).
+21. [ ] Получить API-ключ NHL (если требуется).
+    1.  [ ] https://developer.sportradar.com/ice-hockey/reference/nhl-schedule
+    2.  [ ] https://console.sportradar.com/accounts/681b1befd8c98411cfb71bcb/681b1befd8c98411cfb71bcc/subscriptions/681b2155fce1899c57e7b65d
 22. Написать Python-скрипт для запроса данных матчей.
 23. Реализовать обработку ошибок API-запросов.
 24. Сохранить сырые данные в формате JSON.
