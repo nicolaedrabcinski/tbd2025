@@ -1,0 +1,65 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+env/
+venv/
+.tbd-py3.10/
+
+# Poetry
+poetry.lock
+# (optional: keep this if you want lockfile versioning)
+
+# Pytest / coverage
+.cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs and local run files
+*.log
+*.out
+*.pid
+
+# IDE / Editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Prefect
+prefect/flows/__pycache__/
+prefect/.prefect/
+.prefect/
+
+# Docker
+**/docker-compose.override.yml
+**/.dockerignore
+
+# Sandbox or temp files
+sandbox/
+flow.dot
+
+# Reports and build files
+*.aux
+*.out
+*.toc
+*.pdf
+*.log
+
+# Environment variables
+.env
+
+# DBT generated files
+dbt/target/
+dbt/dbt_modules/

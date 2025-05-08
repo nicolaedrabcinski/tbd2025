@@ -14,6 +14,8 @@
 
 - (Multidimentional analysis) Cube.js
 - (Data Lake) Apache Hadoop && MinIO
+- (Cloud Platform for Big Data) Databricks
+- (Big Data Processing) Apache Spark
 
 # Visualizations and reports
 
